@@ -11,6 +11,9 @@ import MainLayout from './layout/MainLayout.jsx';
 import Home from './components/Home.jsx';
 import AddTask from './components/AddTask.jsx';
 import ErrorPage from './pages/ErrorPage.jsx';
+import BrowseTasks from './components/BrowseTasks.jsx';
+import SignUp from './pages/SignUp.jsx';
+import LoginPage from './pages/LoginPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -25,9 +28,27 @@ const router = createBrowserRouter([
         path:"addTask",
         Component: AddTask,
       },
+      {
+        path:"browseTasks",
+        Component:BrowseTasks,
+      },
+      {
+        path:"loginPage",
+        Component: LoginPage,
+      },
+      {
+        path:"signUp",
+        Component: SignUp,
+      }
+
 
     ]
   },
+  
+
+
+
+
   {
     path:"/*",
     Component:ErrorPage,

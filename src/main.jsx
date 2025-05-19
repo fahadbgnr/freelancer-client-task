@@ -14,6 +14,7 @@ import ErrorPage from './pages/ErrorPage.jsx';
 import BrowseTasks from './components/BrowseTasks.jsx';
 import SignUp from './pages/SignUp.jsx';
 import LoginPage from './pages/LoginPage.jsx';
+import MyPostedTasks from './components/MyPostedTasks.jsx';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,11 @@ const router = createBrowserRouter([
       {
         path:"browseTasks",
         Component:BrowseTasks,
+      },
+      {
+        path:"myPostedTasks",
+        Component: MyPostedTasks,
+
       },
       {
         path:"loginPage",

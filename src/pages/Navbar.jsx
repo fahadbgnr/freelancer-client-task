@@ -22,6 +22,7 @@ const Navbar = () => {
         <NavLink to='/' className='m-2 active:text-indigo-800' >Home</NavLink>
         <NavLink to='/addTask' className='m-2 active:text-indigo-800'>AddTask</NavLink>
         <NavLink to='/browseTasks' className='m-2 active:text-indigo-800'>BrowseTasks</NavLink>
+        <NavLink to='/myPostedTasks' className='m-2 active:text-indigo-800'>MyPostedTasks</NavLink>
 
 
 

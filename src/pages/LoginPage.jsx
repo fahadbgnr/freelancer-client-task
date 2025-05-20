@@ -7,8 +7,8 @@ const LoginPage = () => {
     const { loginUser, googleSignIn } = use(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || "/";
-
+    const from = location.state;
+console.log(from);
     const handleLogin = (e) => {
         e.preventDefault();
         const email = e.target.email.value;
@@ -17,11 +17,13 @@ const LoginPage = () => {
         loginUser(email, password)
             .then(() => {
                 Swal.fire("Success", "Login successful", "success");
-                navigate(from, { replace: true });
+                 navigate(from, { replace: true });
+                
             })
             .catch((error) => {
                 Swal.fire("Error", error.message, "error");
             });
+           
     };
 
     const handleGoogleLogin = () => {

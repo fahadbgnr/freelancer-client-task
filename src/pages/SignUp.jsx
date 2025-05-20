@@ -1,13 +1,15 @@
 
 import React, { use } from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 
 import { AuthContext } from '../provider/AuthContext';
 import Swal from 'sweetalert2';
 
 const SignUp = () => {
     const { createUser, googleSignIn, user } = use(AuthContext);
-    console.log(createUser);
+   const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state || "/";
 
     const handleSignUp = async (e) => {
         e.preventDefault();
@@ -43,13 +45,16 @@ const SignUp = () => {
                                 title: "Your Account is Created.",
                                 icon: "success",
                                 draggable: true
+                                
                             });
+                             
                         }
                     })
             }))
             .catch(error => {
                 console.log(error)
             })
+            navigate(from, { replace: true });
     };
 
 
@@ -80,6 +85,8 @@ const SignUp = () => {
                                 title: "Logged in with Google!",
                                 icon: "success"
                             });
+                            navigate(from, { replace: true });
+
                         }
                     });
             })

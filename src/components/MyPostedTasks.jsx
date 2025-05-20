@@ -1,19 +1,23 @@
 import React, { use, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../provider/AuthContext';
-import { useLoaderData, useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 
 const MyPostedTasks = () => {
     const { user } = use(AuthContext);
-    const [users, setUsers] = useState([]);
+    const [freelancerData, setFreelancerData] = useState([]);
     const navigate = useNavigate();
-    console.log(users)
+    console.log(freelancerData)
 
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:3000/users?email=${user.email}`)
+            fetch(`http://localhost:3000/freelancerData?email=${user?.email}`)
                 .then((res) => res.json())
-                .then((data) => setUsers(data));
+                .then((data) => {
+                    console.log("Fetched tasks:", data);
+                    setFreelancerData(data);
+
+                })
         }
     }, [user]);
 
@@ -28,14 +32,14 @@ const MyPostedTasks = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/users/${id}`, {
+                fetch(`http://localhost:3000/freelancerData/${id}`, {
                     method: "DELETE",
                 })
                     .then((res) => res.json())
                     .then((data) => {
                         if (data.deletedCount > 0) {
                             Swal.fire("Deleted!", "Your task has been deleted.", "success");
-                            setUsers(users.filter((user) => user._id !== id));
+                            setFreelancerData(freelancerData.filter((freelancer) => freelancer._id !== id));
                         }
                     });
             }
@@ -57,35 +61,39 @@ const MyPostedTasks = () => {
                     <table className="table table-zebra w-full">
                         <thead>
                             <tr>
-                                <th>Email</th>
+                                <th>Title</th>
                                 <th>Name</th>
-                                <th>CreationTime</th>
-                                <th>LastSignInTime</th>
+                                <th>Category</th>
+                                <th>Budget</th>
+                                <th>Email</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {users.map((user) => (
-                                <tr key={user._id}>
-                                    <td>{user.email}</td>
-                                    <td>{user.name}</td>
-                                    <td>{user.creationTime}</td>
-                                    <td>{user.lastSignInTime}</td>
+                            {freelancerData.map((freelancer) => (
+                                <tr key={freelancer._id}>
+                                    <td>{freelancer.title}</td>
+                                    <td>{freelancer.name}</td>
+                                    <td>{freelancer.category}</td>
+                                    <td>{freelancer.budget}</td>
+                                    <td>{freelancer.email}</td>
                                     <td className="space-x-2">
+                                        <Link to={`/updateTaskPage/${freelancer._id}`}>
+                                            <button
+                                                onClick={() => handleUpdate(freelancer._id)}
+                                                className="btn btn-sm btn-primary"
+                                            >
+                                                Update
+                                            </button>
+                                        </Link>
                                         <button
-                                            onClick={() => handleUpdate(user._id)}
-                                            className="btn btn-sm btn-primary"
-                                        >
-                                            Update
-                                        </button>
-                                        <button
-                                            onClick={() => handleDelete(user._id)}
+                                            onClick={() => handleDelete(freelancer._id)}
                                             className="btn btn-sm btn-error"
                                         >
                                             Delete
                                         </button>
                                         <button
-                                            onClick={() => handleViewBids(user._id)}
+                                            onClick={() => handleViewBids(freelancer._id)}
                                             className="btn btn-sm btn-accent"
                                         >
                                             Bids
@@ -93,7 +101,7 @@ const MyPostedTasks = () => {
                                     </td>
                                 </tr>
                             ))}
-                            {users.length === 0 && (
+                            {freelancerData.length === 0 && (
                                 <tr>
                                     <td colSpan="5" className="text-center text-gray-500">
                                         No tasks posted yet.

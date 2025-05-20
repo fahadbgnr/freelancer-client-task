@@ -19,6 +19,7 @@ import TaskDetails from './components/TaskDetails.jsx';
 import BrowseTaskCard from './components/BrowseTaskCard.jsx';
 import AuthProvider from './provider/AuthProvider.jsx';
 import PrivateRoute from './provider/PrivateRoute.jsx';
+import UpdateTaskPage from './components/UpdateTaskPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,13 @@ const router = createBrowserRouter([
         path: "myPostedTasks",
         element: <PrivateRoute>
           <MyPostedTasks></MyPostedTasks>
+        </PrivateRoute>
+
+      },
+      {
+        path:"/updateTaskPage/:id",
+        element: <PrivateRoute>
+          <UpdateTaskPage></UpdateTaskPage>
         </PrivateRoute>
 
       },

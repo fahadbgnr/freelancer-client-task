@@ -15,49 +15,65 @@ import BrowseTasks from './components/BrowseTasks.jsx';
 import SignUp from './pages/SignUp.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import MyPostedTasks from './components/MyPostedTasks.jsx';
+import TaskDetails from './components/TaskDetails.jsx';
+import BrowseTaskCard from './components/BrowseTaskCard.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayout,
-    children:[
+    children: [
       {
-        index:true,
+        index: true,
         Component: Home,
       },
       {
-        path:"addTask",
+        path: "addTask",
         Component: AddTask,
       },
       {
-        path:"browseTasks",
-        Component:BrowseTasks,
+        path: "browseTasks",
+        loader: () => fetch('http://localhost:3000/freelancerData'),
+        Component: BrowseTasks,
+      },
+
+      {
+        path: "/browseTaskCard/:id",
+        loader: () => fetch('http://localhost:3000/freelancerData'),
+        Component: BrowseTaskCard,
       },
       {
-        path:"myPostedTasks",
+        path: "/taskDetails/:id",
+        Component: TaskDetails,
+
+      },
+
+
+      {
+        path: "myPostedTasks",
         Component: MyPostedTasks,
 
       },
       {
-        path:"loginPage",
+        path: "loginPage",
         Component: LoginPage,
       },
       {
-        path:"signUp",
+        path: "signUp",
         Component: SignUp,
       }
 
 
     ]
   },
-  
+
 
 
 
 
   {
-    path:"/*",
-    Component:ErrorPage,
+    path: "/*",
+    Component: ErrorPage,
   },
 ]);
 

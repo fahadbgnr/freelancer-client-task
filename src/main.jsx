@@ -17,6 +17,7 @@ import LoginPage from './pages/LoginPage.jsx';
 import MyPostedTasks from './components/MyPostedTasks.jsx';
 import TaskDetails from './components/TaskDetails.jsx';
 import BrowseTaskCard from './components/BrowseTaskCard.jsx';
+import AuthProvider from './provider/AuthProvider.jsx';
 
 const router = createBrowserRouter([
   {
@@ -79,6 +80,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>,
 )

@@ -21,6 +21,7 @@ import AuthProvider from './provider/AuthProvider.jsx';
 import PrivateRoute from './provider/PrivateRoute.jsx';
 import UpdateTaskPage from './components/UpdateTaskPage.jsx';
 import BidsPage from './pages/BidsPage.jsx';
+import Loder from './pages/Loder.jsx';
 
 const router = createBrowserRouter([
   {
@@ -41,12 +42,14 @@ const router = createBrowserRouter([
         path: "browseTasks",
         loader: () => fetch('https://freelance-task-server.vercel.app/freelancerData'),
         Component: BrowseTasks,
+        hydrateFallbackElement: <Loder></Loder>,
       },
 
       {
         path: "/browseTaskCard/:id",
         loader: () => fetch('https://freelance-task-server.vercel.app/freelancerData'),
         Component: BrowseTaskCard,
+        hydrateFallbackElement: <Loder></Loder>,
       },
       {
         path: "/taskDetails/:id",

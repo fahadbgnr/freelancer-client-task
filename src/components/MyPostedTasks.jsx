@@ -92,12 +92,14 @@ const MyPostedTasks = () => {
                                         >
                                             Delete
                                         </button>
+                                        <Link to='/bidsPage'>
                                         <button
                                             onClick={() => handleViewBids(freelancer._id)}
                                             className="btn btn-sm btn-accent"
                                         >
                                             Bids
                                         </button>
+                                        </Link>
                                     </td>
                                 </tr>
                             ))}

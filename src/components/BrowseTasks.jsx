@@ -3,8 +3,8 @@ import { useLoaderData } from 'react-router';
 import BrowseTaskCard from './BrowseTaskCard';
 
 const BrowseTasks = () => {
-    const freelancerData = useLoaderData();
-    console.log(freelancerData);
+    const freelancersData = useLoaderData();
+    console.log(freelancersData);
     return (
 
         <div>
@@ -12,7 +12,7 @@ const BrowseTasks = () => {
              <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
 
            {
-            freelancerData.map(browseTask=> <BrowseTaskCard key={browseTask._id} browseTask={browseTask} ></BrowseTaskCard>)
+            freelancersData.map(browseTask=> <BrowseTaskCard key={browseTask._id} browseTask={browseTask} ></BrowseTaskCard>)
            }
         </div>
         </div>

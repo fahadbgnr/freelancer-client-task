@@ -4,7 +4,7 @@ const FeaturedTaskSection = () => {
     const [featuredTasks, setFeaturedTasks] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:3000/featuredTasks")
+        fetch("https://freelance-task-server.vercel.app/featuredTasks")
             .then((res) => res.json())
             .then((data) => setFeaturedTasks(data))
             .catch((error) => console.error("Error loading featured tasks:", error));

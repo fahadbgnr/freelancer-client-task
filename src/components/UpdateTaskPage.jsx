@@ -17,7 +17,7 @@ const UpdateTaskPage = () => {
   });
 
   useEffect(() => {
-    fetch(`http://localhost:3000/freelancerData/${id}`)
+    fetch(`https://freelance-task-server.vercel.app/freelancerData/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setTask(data);
@@ -31,7 +31,7 @@ const UpdateTaskPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:3000/freelancerData/${id}`, {
+    fetch(`https://freelance-task-server.vercel.app/freelancerData/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

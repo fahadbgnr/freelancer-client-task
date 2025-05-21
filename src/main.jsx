@@ -39,13 +39,13 @@ const router = createBrowserRouter([
       },
       {
         path: "browseTasks",
-        loader: () => fetch('http://localhost:3000/freelancerData'),
+        loader: () => fetch('https://freelance-task-server.vercel.app/freelancerData'),
         Component: BrowseTasks,
       },
 
       {
         path: "/browseTaskCard/:id",
-        loader: () => fetch('http://localhost:3000/freelancerData'),
+        loader: () => fetch('https://freelance-task-server.vercel.app/freelancerData'),
         Component: BrowseTaskCard,
       },
       {

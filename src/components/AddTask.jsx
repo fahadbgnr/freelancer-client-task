@@ -23,7 +23,7 @@ const AddTask = () => {
             });
         }
 
-        fetch('http://localhost:3000/freelancerData', {
+        fetch('https://freelance-task-server.vercel.app/freelancerData', {
             method: "POST",
             headers: {
                 "content-type": "application/json",

@@ -7,7 +7,7 @@ const TaskDetails = () => {
 
   useEffect(() => {
     // Replace this URL with your actual backend endpoint
-    fetch(`http://localhost:3000/freelancerData/${id}`)
+    fetch(`https://freelance-task-server.vercel.app/freelancerData/${id}`)
       .then(res => res.json())
       .then(data => setBrowseTask(data))
   }, [id]);

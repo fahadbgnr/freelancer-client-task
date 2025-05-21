@@ -30,7 +30,7 @@ const SignUp = () => {
                 }
 
 
-                fetch('http://localhost:3000/users', {
+                fetch('https://freelance-task-server.vercel.app/users', {
                     method: "POST",
                     headers: {
                         'content-type': 'application/json'
@@ -71,7 +71,7 @@ const SignUp = () => {
                     lastSignInTime: loggedUser.metadata.lastSignInTime,
                 };
 
-                fetch('http://localhost:3000/users', {
+                fetch('https://freelance-task-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',

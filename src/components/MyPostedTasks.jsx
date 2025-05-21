@@ -1,23 +1,25 @@
-import React, { use, useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../provider/AuthContext';
 import { Link, useNavigate } from 'react-router';
 
 const MyPostedTasks = () => {
-    const { user } = use(AuthContext);
+    
+    const [bidsCount, setBidsCount] = useState(0);
+    const [visibleBids, setVisibleBids] = useState(null);
+    const [bidsData, setBidsData] = useState([]);
+
+    const { user } = useContext(AuthContext); 
     const [freelancerData, setFreelancerData] = useState([]);
     const navigate = useNavigate();
-    console.log(freelancerData)
 
     useEffect(() => {
         if (user) {
             fetch(`https://freelance-task-server.vercel.app/freelancers?email=${user?.email}`)
                 .then((res) => res.json())
                 .then((data) => {
-                    console.log("Fetched tasks:", data);
                     setFreelancerData(data);
-
-                })
+                });
         }
     }, [user]);
 
@@ -46,17 +48,33 @@ const MyPostedTasks = () => {
         });
     };
 
-    const handleUpdate = (id) => {
-        navigate(`/update-user/${id}`);
+
+
+   
+    const handleViewBids = (taskId) => {
+        if (visibleBids === taskId) {
+            setVisibleBids(null); 
+            return;
+        }
+
+        fetch(`https://freelance-task-server.vercel.app/bids?taskId=${taskId}`)
+            .then(res => res.json())
+            .then(data => {
+                setBidsData(data);
+                setVisibleBids(taskId);
+                setBidsCount(prev => prev + 1); 
+            });
     };
 
-    const handleViewBids = (id) => {
-        navigate(`/user/${id}/bids`);
-    };
     return (
         <div>
             <div className="p-6">
+                <h2 className="text-xl font-semibold mb-2 text-green-700">
+                    You bid for {bidsCount} {bidsCount === 1 ? "opportunity" : "opportunities"}.
+                </h2>
+
                 <h2 className="text-2xl font-bold mb-4">My Posted Tasks</h2>
+
                 <div className="overflow-x-auto">
                     <table className="table table-zebra w-full">
                         <thead>
@@ -71,41 +89,69 @@ const MyPostedTasks = () => {
                         </thead>
                         <tbody>
                             {freelancerData.map((freelancer) => (
-                                <tr key={freelancer._id}>
-                                    <td>{freelancer.title}</td>
-                                    <td>{freelancer.name}</td>
-                                    <td>{freelancer.category}</td>
-                                    <td>{freelancer.budget}</td>
-                                    <td>{freelancer.email}</td>
-                                    <td className="space-x-2">
-                                        <Link to={`/updateTaskPage/${freelancer._id}`}>
+                                <React.Fragment key={freelancer._id}>
+                                    <tr>
+                                        <td>{freelancer.title}</td>
+                                        <td>{freelancer.name}</td>
+                                        <td>{freelancer.category}</td>
+                                        <td>{freelancer.budget}</td>
+                                        <td>{freelancer.email}</td>
+                                        <td className="space-x-2">
+                                            <Link to={`/updateTaskPage/${freelancer._id}`}>
+                                                <button
+                                                    className="btn btn-sm btn-primary"
+                                                >
+                                                    Update
+                                                </button>
+                                            </Link>
                                             <button
-                                                onClick={() => handleUpdate(freelancer._id)}
-                                                className="btn btn-sm btn-primary"
+                                                onClick={() => handleDelete(freelancer._id)}
+                                                className="btn btn-sm btn-error"
                                             >
-                                                Update
+                                                Delete
                                             </button>
-                                        </Link>
-                                        <button
-                                            onClick={() => handleDelete(freelancer._id)}
-                                            className="btn btn-sm btn-error"
-                                        >
-                                            Delete
-                                        </button>
-                                        <Link to='/bidsPage'>
-                                        <button
-                                            onClick={() => handleViewBids(freelancer._id)}
-                                            className="btn btn-sm btn-accent"
-                                        >
-                                            Bids
-                                        </button>
-                                        </Link>
-                                    </td>
-                                </tr>
+                                    
+                                            <button
+                                                onClick={() => handleViewBids(freelancer._id)}
+                                                className="btn btn-sm btn-accent"
+                                            >
+                                                Bids
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                   
+                                    {visibleBids === freelancer._id && bidsData.length > 0 && (
+                                        <tr>
+                                            <td colSpan="6">
+                                                <div className="p-4 bg-gray-100 rounded shadow">
+                                                    <h3 className="font-semibold text-lg mb-2">Bids:</h3>
+                                                    <ul className="list-disc pl-6">
+                                                        {bidsData.map((bid) => (
+                                                            <li key={bid._id}>
+                                                                <strong>{bid.bidderName}</strong> — ${bid.amount}
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    )}
+
+    
+                                    {visibleBids === freelancer._id && bidsData.length === 0 && (
+                                        <tr>
+                                            <td colSpan="6" className="text-center text-gray-500">
+                                                No bids found for this task.
+                                            </td>
+                                        </tr>
+                                    )}
+                                </React.Fragment>
                             ))}
+
                             {freelancerData.length === 0 && (
                                 <tr>
-                                    <td colSpan="5" className="text-center text-gray-500">
+                                    <td colSpan="6" className="text-center text-gray-500">
                                         No tasks posted yet.
                                     </td>
                                 </tr>

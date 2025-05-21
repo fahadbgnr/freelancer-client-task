@@ -1,8 +1,10 @@
 import React, { use } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../provider/AuthContext';
+import { Link, useNavigate } from 'react-router';
 
 const AddTask = () => {
+    const navigate = useNavigate();
    const { user } = use(AuthContext); 
 
     const handleAddTask = async (e) => {
@@ -39,6 +41,7 @@ const AddTask = () => {
                         confirmButtonColor: "#3085d6"
                     });
                     form.reset(); 
+                     navigate('/browseTasks');
                 }
             })
             .catch((error) => {
@@ -109,9 +112,11 @@ const AddTask = () => {
                     readOnly
                     className="input input-bordered w-full bg-gray-100 text-gray-500" />
 
+              
                 <button
                     type="submit"
                     className="btn btn-primary w-full">Add Task</button>
+              
             </form>
         </div>
     );

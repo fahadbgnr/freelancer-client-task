@@ -1,5 +1,5 @@
 import React, { use, useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router';
+import { Link, useNavigate, useParams } from 'react-router';
 import { AuthContext } from '../provider/AuthContext';
 import Swal from 'sweetalert2';
 
@@ -7,6 +7,7 @@ const UpdateTaskPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { user } = use(AuthContext);
+  
 
   const [task, setTask] = useState({
     title: '',
@@ -82,15 +83,6 @@ const UpdateTaskPage = () => {
           </select>
 
 
-          {/* <input
-            type="text"
-            name="category"
-            value={task.category}
-            onChange={handleChange}
-            placeholder="Category"
-            className="input input-bordered w-full"
-            required
-          /> */}
           <input
             type="date"
             name="deadline"
@@ -128,9 +120,12 @@ const UpdateTaskPage = () => {
             readOnly
             className="input input-bordered w-full bg-gray-100 cursor-not-allowed"
           />
+        
           <button type="submit" className="btn btn-primary w-full">
             Update Task
           </button>
+          
+         
         </form>
       </div>
     </div>

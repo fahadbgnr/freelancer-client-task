@@ -74,13 +74,6 @@ const router = createBrowserRouter([
 
       },
       {
-        path:"/bidsPage",
-        element: <PrivateRoute>
-          <BidsPage></BidsPage>
-        </PrivateRoute>
-
-      },
-      {
         path: "loginPage",
         Component: LoginPage,
       },

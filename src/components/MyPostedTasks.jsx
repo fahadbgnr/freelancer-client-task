@@ -11,7 +11,7 @@ const MyPostedTasks = () => {
 
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:3000/freelancerData?email=${user?.email}`)
+            fetch(`http://localhost:3000/freelancers?email=${user?.email}`)
                 .then((res) => res.json())
                 .then((data) => {
                     console.log("Fetched tasks:", data);
@@ -32,7 +32,7 @@ const MyPostedTasks = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/freelancerData/${id}`, {
+                fetch(`http://localhost:3000/freelancer/${id}`, {
                     method: "DELETE",
                 })
                     .then((res) => res.json())

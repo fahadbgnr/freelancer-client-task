@@ -101,7 +101,7 @@ const SignUp = () => {
     return (
         <div className="max-w-md mx-auto p-6 bg-base-100 shadow-xl rounded-2xl mt-10">
              <Helmet>
-                    <title>SignUp</title>
+                    <title>TaskHive||SignUp</title>
                 </Helmet>
             <h2 className="text-2xl font-bold mb-4 text-center">SignUp</h2>
             <form onSubmit={handleSignUp} className="space-y-4">

@@ -56,7 +56,7 @@ const AddTask = () => {
     return (
          <div className="max-w-xl mx-auto p-4">
             <Helmet>
-                <title>AddTask</title>
+                <title>TaskHive||AddTask</title>
             </Helmet>
             <h2 className="text-2xl font-bold mb-4">Add New Task</h2>
             <form onSubmit={handleAddTask} className="space-y-4">

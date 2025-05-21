@@ -20,7 +20,7 @@ const TaskDetails = () => {
     return (
         <div>
             <Helmet>
-                <title>TaskDetails</title>
+                <title>TaskHive||TaskDetails</title>
             </Helmet>
             <div className="container mx-auto p-4">
                 <div className="card bg-base-100 shadow-xl p-6 max-w-3xl mx-auto">

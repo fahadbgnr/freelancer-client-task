@@ -9,7 +9,7 @@ const ErrorPage = () => {
              <div>
             <div className=' py-24 text-center' >
                 <Helmet>
-                    <title>Errorpage</title>
+                    <title>TaskHive||Errorpage</title>
                 </Helmet>
                 <h1 className='mb-8 text-4xl lg:text-7xl font-semibold text-accent'>
                     {

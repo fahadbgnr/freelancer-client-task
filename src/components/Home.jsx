@@ -10,7 +10,7 @@ const Home = () => {
         <div>
             <div className='gap-5'>
                 <Helmet>
-                    <title>Home</title>
+                    <title>TaskHive||Home</title>
                 </Helmet>
                 <Banner></Banner>
                 <FeaturedTaskSection></FeaturedTaskSection>

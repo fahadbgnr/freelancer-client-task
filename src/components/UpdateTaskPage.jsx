@@ -52,7 +52,7 @@ const UpdateTaskPage = () => {
   return (
     <div>
       <Helmet>
-                <title>UpdateTaskPage</title>
+                <title>TaskHive||UpdateTaskPage</title>
             </Helmet>
       <div className="max-w-xl mx-auto p-6">
         <h2 className="text-2xl font-bold mb-4">Update Task</h2>

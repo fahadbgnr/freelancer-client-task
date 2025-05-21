@@ -70,7 +70,7 @@ const MyPostedTasks = () => {
     return (
         <div>
             <Helmet>
-                <title>MyPostedTask</title>
+                <title>TaskHive||MyPostedTask</title>
             </Helmet>
             <div className="p-6">
                 <h2 className="text-xl font-semibold mb-2 text-green-700">

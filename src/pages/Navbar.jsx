@@ -58,7 +58,7 @@ const Navbar = () => {
                         }
                     </ul>
                 </div>
-                <h2 className="text-xs md:text-2xl lg:text-3xl">Freelance Task Marketplace</h2>
+                <h2 className="text-xs md:text-2xl lg:text-3xl">TaskHive</h2>
             </div>
 
             <div className="navbar-center hidden lg:flex">

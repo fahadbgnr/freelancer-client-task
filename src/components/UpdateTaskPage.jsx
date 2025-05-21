@@ -2,6 +2,7 @@ import React, { use, useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router';
 import { AuthContext } from '../provider/AuthContext';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 
 const UpdateTaskPage = () => {
   const { id } = useParams();
@@ -50,6 +51,9 @@ const UpdateTaskPage = () => {
   };
   return (
     <div>
+      <Helmet>
+                <title>UpdateTaskPage</title>
+            </Helmet>
       <div className="max-w-xl mx-auto p-6">
         <h2 className="text-2xl font-bold mb-4">Update Task</h2>
         <form onSubmit={handleSubmit} className="space-y-4">

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 
 const FeaturedTaskSection = () => {
     const [featuredTasks, setFeaturedTasks] = useState([]);
@@ -12,6 +13,9 @@ const FeaturedTaskSection = () => {
     return (
         <div>
             <div className="max-w-6xl mx-auto px-4 py-8">
+                <Helmet>
+                <title>FeaturedTasks</title>
+            </Helmet>
                 <h2 className="text-3xl font-bold mb-6 text-center">Featured Tasks</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {featuredTasks.map((task) => (

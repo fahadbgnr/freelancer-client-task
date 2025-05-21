@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../provider/AuthContext';
 import { Link, useNavigate } from 'react-router';
+import { Helmet } from 'react-helmet';
 
 const MyPostedTasks = () => {
     
@@ -68,6 +69,9 @@ const MyPostedTasks = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>MyPostedTask</title>
+            </Helmet>
             <div className="p-6">
                 <h2 className="text-xl font-semibold mb-2 text-green-700">
                     You bid for {bidsCount} {bidsCount === 1 ? "opportunity" : "opportunities"}.

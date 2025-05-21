@@ -2,6 +2,7 @@ import React, { use } from 'react';
 import { AuthContext } from '../provider/AuthContext';
 import { Link, useLocation, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 
 const LoginPage = () => {
     const { loginUser, googleSignIn } = use(AuthContext);
@@ -53,6 +54,9 @@ console.log(from);
     return (
         <div>
             <div className="max-w-md mx-auto p-6 bg-base-100 shadow-xl rounded-2xl mt-10">
+                <Helmet>
+                    <title>Login</title>
+                </Helmet>
                 <h2 className="text-2xl font-bold mb-4 text-center">Login</h2>
                 <form onSubmit={handleLogin} className="space-y-4">
                     <input 

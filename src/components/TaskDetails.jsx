@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import {  useParams } from 'react-router';
 
 const TaskDetails = () => {
@@ -18,6 +19,9 @@ const TaskDetails = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>TaskDetails</title>
+            </Helmet>
             <div className="container mx-auto p-4">
                 <div className="card bg-base-100 shadow-xl p-6 max-w-3xl mx-auto">
                     <h2 className="text-3xl font-bold mb-4 text-center">{browseTask.title}</h2>

@@ -8,10 +8,10 @@ import { Helmet } from 'react-helmet';
 const Home = () => {
     return (
         <div>
-            <div className='gap-5'>
-                <Helmet>
+            <Helmet>
                     <title>TaskHive||Home</title>
                 </Helmet>
+            <div className='gap-5'>
                 <Banner></Banner>
                 <FeaturedTaskSection></FeaturedTaskSection>
                 <ServiceSection></ServiceSection>

@@ -15,6 +15,7 @@ import {
   Legend,
 } from 'chart.js';
 import Loder from '../pages/Loder';
+import { Helmet } from 'react-helmet';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -71,6 +72,9 @@ const DashboardLayout = () => {
 
   return (
     <div className="max-w-6xl mx-auto p-6">
+      <Helmet>
+        <title>TaskHive||Dashboard</title>
+      </Helmet>
       <div className="flex justify-between items-center mb-8" data-aos="fade-down">
         <h1 className="text-3xl font-bold text-gray-800">Dashboard Overview</h1>
         <button

@@ -19,3 +19,13 @@ Welcome to **TaskHive**, a modern freelance task marketplace where clients can p
 - 📦 **React Context API**: Global state management for authentication and user data.
 
 - 💬 **SweetAlert2 Notifications**: Friendly and informative alerts for all user interactions (login, logout, post success, etc.).
+
+
+  ## 🛠️ Local Development Setup
+
+Follow these steps to run **TaskHive** locally:
+
+1. **Clone the Repository**
+   ```bash
+   https://github.com/fahadbgnr/freelancer-client-task.git
+   cd freelancer-client-task

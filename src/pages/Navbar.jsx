@@ -6,10 +6,10 @@ import Swal from 'sweetalert2';
 import Logo from '../assets/Logo.png'
 
 const Navbar = () => {
-    const { user, logoutUser,setUser } = use(AuthContext);
+    const { user, logoutUser, setUser } = use(AuthContext);
 
     const handleLogout = () => {
-          Swal.fire({
+        Swal.fire({
             title: "Are you sure you want to log out?",
             icon: "warning",
             showCancelButton: true,
@@ -23,19 +23,27 @@ const Navbar = () => {
                         Swal.fire("Logged Out!", "", "success");
                     }).catch((error) => {
                         console.error("Logout error:", error);
-                         logoutUser();
+                        logoutUser();
                     });
                 });
             }
-        
+
         });
     };
     const navLinks = (
         <>
             <NavLink to='/' className='m-2'>Home</NavLink>
-            <NavLink to='/addTask' className='m-2'>Add Task</NavLink>
             <NavLink to='/browseTasks' className='m-2'>Browse Tasks</NavLink>
-            <NavLink to='/myPostedTasks' className='m-2'>My Posted Tasks</NavLink>
+            {
+                user && <>
+                    <NavLink to='/addTask' className='m-2'>Add Task</NavLink>
+                    <NavLink to='/myPostedTasks' className='m-2'>My Posted Tasks</NavLink>
+                </>
+            }
+             <li><NavLink to="/dashboard">Dashboard</NavLink></li>
+               <li><NavLink to="/about">About Us</NavLink></li>
+                 <li><NavLink to="/contact">Contact</NavLink></li>
+
         </>
     );
     return (
@@ -54,10 +62,10 @@ const Navbar = () => {
                         }
                     </ul>
                 </div>
-               <div className='flex items-center justify-center'>
-                <img className='w-16'  src={Logo} alt="" />
-                 <h2 className="text-xs md:text-2xl lg:text-3xl"><span className="text-blue-600">Tasks</span>Hive</h2>
-               </div>
+                <div className='flex items-center justify-center'>
+                    <img className='w-16' src={Logo} alt="" />
+                    <h2 className="text-xs md:text-2xl lg:text-3xl"><span className="text-blue-600">Tasks</span>Hive</h2>
+                </div>
             </div>
 
             <div className="navbar-center hidden lg:flex">

@@ -21,6 +21,9 @@ import AuthProvider from './provider/AuthProvider.jsx';
 import PrivateRoute from './provider/PrivateRoute.jsx';
 import UpdateTaskPage from './components/UpdateTaskPage.jsx';
 import Loder from './pages/Loder.jsx';
+import DashboardLayout from './layout/DashboardLayout.jsx';
+import AboutUs from './pages/AboutUs.jsx';
+import ContactSection from './pages/ContactSection.jsx';
 
 const router = createBrowserRouter([
   {
@@ -73,6 +76,16 @@ const router = createBrowserRouter([
 
       },
       {
+        path:'about',
+        Component: AboutUs
+
+      },
+      {
+        path: 'contact',
+        Component: ContactSection
+
+      },
+      {
         path: "loginPage",
         Component: LoginPage,
       },
@@ -83,6 +96,12 @@ const router = createBrowserRouter([
 
 
     ]
+  },
+
+  {
+    path:'dashboard',
+    Component: DashboardLayout,
+
   },
 
 

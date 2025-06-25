@@ -80,6 +80,7 @@ const AddTask = () => {
                     <option>UI Developer</option>
                     <option>Full-Stack Marketplace Developer</option>
                     <option>Frontend Developer</option>
+                    <option>App Development</option>
                 </select>
 
                 <textarea

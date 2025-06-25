@@ -9,7 +9,7 @@ const MainLayout = () => {
             <div className='w-11/12 mx-auto my-3'>
                 <Header></Header>
             </div>
-          <main className='w-11/12 mx-auto'>
+          <main className='w-11/12 mx-auto mt-20'>
               <Outlet></Outlet>
           </main>
            <footer className='w-11/12 mx-auto mt-3'>

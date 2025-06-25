@@ -11,7 +11,7 @@ const Home = () => {
             <Helmet>
                     <title>TaskHive||Home</title>
                 </Helmet>
-            <div className='gap-5'>
+            <div className='w-11/12 mx-auto gap-5'>
                 <Banner></Banner>
                 <FeaturedTaskSection></FeaturedTaskSection>
                 <ServiceSection></ServiceSection>

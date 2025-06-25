@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router';
 import userIcon from '../assets/user.png';
 import { AuthContext } from '../provider/AuthContext';
 import Swal from 'sweetalert2';
+import Logo from '../assets/Logo.png'
 
 const Navbar = () => {
     const { user, logoutUser,setUser } = use(AuthContext);
@@ -58,7 +59,10 @@ const Navbar = () => {
                         }
                     </ul>
                 </div>
-                <h2 className="text-xs md:text-2xl lg:text-3xl">TaskHive</h2>
+               <div className='flex items-center justify-center'>
+                <img className='w-16'  src={Logo} alt="" />
+                 <h2 className="text-xs md:text-2xl lg:text-3xl">TaskHive</h2>
+               </div>
             </div>
 
             <div className="navbar-center hidden lg:flex">

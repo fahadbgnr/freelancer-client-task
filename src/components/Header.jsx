@@ -3,7 +3,7 @@ import Navbar from '../pages/Navbar';
 
 const Header = () => {
     return (
-        <div className='sticky top-0'>
+        <div>
             <Navbar></Navbar>
         </div>
     );

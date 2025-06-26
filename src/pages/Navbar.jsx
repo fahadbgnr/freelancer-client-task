@@ -49,11 +49,6 @@ const Navbar = () => {
               Add Task
             </NavLink>
           </li>
-          <li>
-            <NavLink to='/myPostedTasks' className='m-2' onClick={() => window.scrollTo(0, 0)}>
-              My Posted Tasks
-            </NavLink>
-          </li>
         </>
       )}
       <li>

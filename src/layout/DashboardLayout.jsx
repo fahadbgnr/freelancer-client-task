@@ -1,103 +1,91 @@
-import React, { useEffect, useState } from 'react';
-import { Bar } from 'react-chartjs-2';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import { useNavigate } from 'react-router';
+import React from 'react';
+import { NavLink, Outlet } from 'react-router';
+import Logo from '../assets/Logo.png';
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-import Loder from '../pages/Loder';
-import { Helmet } from 'react-helmet';
-
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+  LayoutDashboard,
+  LineChart,
+  ClipboardList,
+  Home,
+} from 'lucide-react';
 
 const DashboardLayout = () => {
-  const [jobs, setJobs] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    AOS.init({ duration: 1000, once: true });
-
-    fetch('https://freelance-task-server.vercel.app/freelancerData')
-      .then(res => {
-        if (!res.ok) throw new Error('Failed to fetch data');
-        return res.json();
-      })
-      .then(data => {
-        setJobs(data);
-        setLoading(false);
-      })
-      .catch(err => {
-        setError(err.message);
-        setLoading(false);
-      });
-  }, []);
-
-  if (loading) return <Loder />;
-  if (error) return <div className="text-center mt-10 text-red-500">Error: {error}</div>;
-
-  const chartData = {
-    labels: jobs.map(job => job.title),
-    datasets: [
-      {
-        label: 'Budget',
-        data: jobs.map(job => Number(job.budget) || 0),
-        backgroundColor: 'rgba(99, 102, 241, 0.7)',
-        borderRadius: 6,
-      },
-    ],
-  };
-
-  const options = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: { position: 'top' },
-      title: { display: true, text: 'Jobs Budget Chart', font: { size: 20 } },
-    },
-    scales: {
-      y: {
-        beginAtZero: true,
-        ticks: { stepSize: 1000 },
-      },
-      x: {
-        ticks: {
-          autoSkip: false,
-          maxRotation: 45,
-          minRotation: 20,
-        },
-      },
-    },
-  };
-
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <Helmet>
-        <title>TaskHive || Dashboard</title>
-      </Helmet>
+    <div className="drawer lg:drawer-open">
+      <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+      <div className="drawer-content flex flex-col">
+        {/* Top Navbar (Mobile Only) */}
+        <div className="navbar bg-base-300 w-full lg:hidden">
+          <div className="flex-none">
+            <label htmlFor="my-drawer-2" className="btn btn-square btn-ghost">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                className="inline-block w-6 h-6 stroke-current"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </label>
+          </div>
+          <div className="mx-2 flex-1 px-2 text-lg font-semibold">Dashboard</div>
+        </div>
 
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4" data-aos="fade-down">
-        <h1 className="text-2xl md:text-3xl font-bold text-gray-800">Dashboard Overview</h1>
-        <button
-          onClick={() => navigate('/')}
-          className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md shadow-md transition"
-        >
-          Go to Home
-        </button>
+        {/* Optional Banner */}
+        <div className="p-4 bg-base-100 border-b border-base-300">
+          <h1 className="text-2xl font-semibold text-primary">Welcome to Your Dashboard</h1>
+          <p className="text-sm text-gray-500">Use the sidebar to manage your tasks and view stats.</p>
+        </div>
+
+        {/* Main Content */}
+        <div className="p-4">
+          <Outlet />
+        </div>
       </div>
 
-      <div data-aos="fade-up" className="bg-white p-4 sm:p-6 rounded-lg shadow-lg w-full overflow-x-auto">
-        <div className="min-w-[350px] h-[300px] sm:h-[400px] md:h-[500px]">
-          <Bar data={chartData} options={options} />
-        </div>
+      {/* Sidebar */}
+      <div className="drawer-side">
+        <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
+        <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content space-y-2">
+          <img className="w-16 mb-6" src={Logo} alt="Logo" />
+          <li>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? 'text-primary font-semibold' : ''
+              }
+            >
+              <Home className="inline-block mr-2" size={18} />
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/dashboard/jobBudgetChart"
+              className={({ isActive }) =>
+                isActive ? 'text-primary font-semibold' : ''
+              }
+            >
+              <LineChart className="inline-block mr-2" size={18} />
+              Job Budget Chart
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/dashboard/myPostedTasks"
+              className={({ isActive }) =>
+                isActive ? 'text-primary font-semibold' : ''
+              }
+            >
+              <ClipboardList className="inline-block mr-2" size={18} />
+              My Posted Tasks
+            </NavLink>
+          </li>
+        </ul>
       </div>
     </div>
   );

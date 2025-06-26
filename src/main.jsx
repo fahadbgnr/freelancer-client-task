@@ -14,7 +14,6 @@ import ErrorPage from './pages/ErrorPage.jsx';
 import BrowseTasks from './components/BrowseTasks.jsx';
 import SignUp from './pages/SignUp.jsx';
 import LoginPage from './pages/LoginPage.jsx';
-import MyPostedTasks from './components/MyPostedTasks.jsx';
 import TaskDetails from './components/TaskDetails.jsx';
 import BrowseTaskCard from './components/BrowseTaskCard.jsx';
 import AuthProvider from './provider/AuthProvider.jsx';
@@ -24,6 +23,9 @@ import Loder from './pages/Loder.jsx';
 import DashboardLayout from './layout/DashboardLayout.jsx';
 import AboutUs from './pages/AboutUs.jsx';
 import ContactSection from './pages/ContactSection.jsx';
+import JobBudgetChart from './pages/Dashboard/JobBudgetChart.jsx';
+import MyPostedTasks from './pages/Dashboard/MyPostedTasks.jsx';
+import DashboardHome from './pages/Dashboard/DashboardHome.jsx';
 
 const router = createBrowserRouter([
   {
@@ -59,15 +61,13 @@ const router = createBrowserRouter([
           <TaskDetails></TaskDetails>
         </PrivateRoute>
       },
+      // {
+      //   path: "myPostedTasks",
+      //   element: <PrivateRoute>
+      //     <MyPostedTasks></MyPostedTasks>
+      //   </PrivateRoute>
 
-
-      {
-        path: "myPostedTasks",
-        element: <PrivateRoute>
-          <MyPostedTasks></MyPostedTasks>
-        </PrivateRoute>
-
-      },
+      // },
       {
         path: "/updateTaskPage/:id",
         element: <PrivateRoute>
@@ -101,6 +101,23 @@ const router = createBrowserRouter([
   {
     path:'dashboard',
     Component: DashboardLayout,
+    children: [
+      {
+        path: 'dashboardHome',
+        Component: DashboardHome,
+
+      },
+      {
+        path:'jobBudgetChart',
+        Component: JobBudgetChart,
+      },
+      {
+        path: 'myPostedTasks',
+        element: <PrivateRoute>
+          <MyPostedTasks></MyPostedTasks>
+        </PrivateRoute>
+      }
+    ]
 
   },
 

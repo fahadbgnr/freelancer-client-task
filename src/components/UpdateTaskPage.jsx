@@ -44,7 +44,7 @@ const UpdateTaskPage = () => {
       .then((data) => {
         if (data.modifiedCount > 0) {
           Swal.fire('Success', 'Task updated successfully', 'success');
-          navigate('/myPostedTasks');
+          navigate('/dashboard/myPostedTasks');
         }
       });
 

@@ -6,13 +6,13 @@ import Footer from '../components/Footer';
 const MainLayout = () => {
     return (
         <div>
-            <div className='my-3'>
+            <div>
                 <Header></Header>
             </div>
           <main className='w-11/12 mx-auto mt-20'>
               <Outlet></Outlet>
           </main>
-           <footer className='mt-3'>
+           <footer>
              <Footer></Footer>
            </footer>
         </div>

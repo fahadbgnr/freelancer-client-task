@@ -70,9 +70,8 @@ const MyPostedTasks = () => {
   return (
     <div className="p-4 md:p-6">
       <Helmet>
-        <title>TaskHive || My Posted Tasks</title>
+        <title>Dashboard || My Posted Tasks</title>
       </Helmet>
-
       <div className="mb-4">
         <h1 className="text-2xl font-bold text-primary">My Posted Tasks</h1>
         <p className="text-sm text-gray-600">Manage and monitor the tasks you've posted.</p>

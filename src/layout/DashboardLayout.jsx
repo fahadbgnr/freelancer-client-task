@@ -7,10 +7,14 @@ import {
   ClipboardList,
   Home,
 } from 'lucide-react';
+import { Helmet } from 'react-helmet';
 
 const DashboardLayout = () => {
   return (
     <div className="drawer lg:drawer-open">
+       <Helmet>
+        <title>TaskHive || Dashboard</title>
+      </Helmet>
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
         {/* Top Navbar (Mobile Only) */}

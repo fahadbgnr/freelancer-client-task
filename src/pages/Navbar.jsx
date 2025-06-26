@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';   
 import userIcon from '../assets/user.png';
 import { AuthContext } from '../provider/AuthContext';
 import Swal from 'sweetalert2';
@@ -32,36 +32,75 @@ const Navbar = () => {
 
   const navLinks = (
     <>
-      <li><NavLink to="/">Home</NavLink></li>
-      <li><NavLink to="/browseTasks">Browse Tasks</NavLink></li>
+      <li>
+        <NavLink to='/' className='m-2' onClick={() => window.scrollTo(0, 0)}>
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to='/browseTasks' className='m-2' onClick={() => window.scrollTo(0, 0)}>
+          Browse Tasks
+        </NavLink>
+      </li>
       {user && (
         <>
-          <li><NavLink to="/addTask">Add Task</NavLink></li>
-          <li><NavLink to="/myPostedTasks">My Posted Tasks</NavLink></li>
+          <li>
+            <NavLink to='/addTask' className='m-2' onClick={() => window.scrollTo(0, 0)}>
+              Add Task
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to='/myPostedTasks' className='m-2' onClick={() => window.scrollTo(0, 0)}>
+              My Posted Tasks
+            </NavLink>
+          </li>
         </>
       )}
-      <li><NavLink to="/dashboard">Dashboard</NavLink></li>
-      <li><NavLink to="/about">About Us</NavLink></li>
-      <li><NavLink to="/contact">Contact</NavLink></li>
+      <li>
+        <NavLink to='/dashboard' className='m-2' onClick={() => window.scrollTo(0, 0)}>
+          Dashboard
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to='/about' className='m-2' onClick={() => window.scrollTo(0, 0)}>
+          About Us
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to='/contact' className='m-2' onClick={() => window.scrollTo(0, 0)}>
+          Contact
+        </NavLink>
+      </li>
     </>
   );
 
   return (
     <div className="bg-base-100 shadow-sm fixed top-0 left-0 w-full z-[999]">
-      <div className="navbar max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="navbar max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-w-0 box-border">
 
         {/* Left: Logo + Mobile Menu */}
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none"
-                viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
               </svg>
             </div>
-            <ul tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[999] p-2 shadow bg-base-100 rounded-box w-52">
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 z-[999] p-2 shadow bg-base-100 rounded-box w-52"
+            >
               {navLinks}
             </ul>
           </div>
@@ -75,9 +114,7 @@ const Navbar = () => {
 
         {/* Center: Nav Menu for large devices */}
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 gap-2">
-            {navLinks}
-          </ul>
+          <ul className="menu menu-horizontal px-1 gap-2">{navLinks}</ul>
         </div>
 
         {/* Right: Auth Actions */}
@@ -94,12 +131,18 @@ const Navbar = () => {
                   {user.displayName || user.email}
                 </div>
               </div>
-              <button onClick={handleLogout} className="btn btn-sm btn-primary">Logout</button>
+              <button onClick={handleLogout} className="btn btn-sm btn-primary">
+                Logout
+              </button>
             </div>
           ) : (
             <div className="flex items-center gap-2">
-              <Link to="/loginPage" className="btn btn-sm btn-primary">Login</Link>
-              <Link to="/signUp" className="btn btn-sm btn-secondary">Sign Up</Link>
+              <Link to="/loginPage" className="btn btn-sm btn-primary" onClick={() => window.scrollTo(0, 0)}>
+                Login
+              </Link>
+              <Link to="/signUp" className="btn btn-sm btn-secondary" onClick={() => window.scrollTo(0, 0)}>
+                Sign Up
+              </Link>
             </div>
           )}
         </div>

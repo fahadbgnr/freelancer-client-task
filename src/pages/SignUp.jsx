@@ -95,9 +95,6 @@ const SignUp = () => {
                 console.error('Google Sign-in Error:', error);
             });
     };
-
-
-
     return (
         <div className="max-w-md mx-auto p-6 bg-base-100 shadow-xl rounded-2xl mt-10">
              <Helmet>

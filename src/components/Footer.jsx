@@ -30,7 +30,6 @@ const Footer = () => {
             <a
               href="https://www.facebook.com/aminulislam.fahad.1"
               target="_blank"
-              rel="noopener noreferrer"
               aria-label="Facebook"
               className="hover:text-blue-600"
             >
@@ -49,7 +48,7 @@ const Footer = () => {
             <a
               href="https://www.linkedin.com/in/sheikh-fahad-956777357"
               target="_blank"
-              rel="noopener noreferrer"
+              
               aria-label="LinkedIn"
               className="hover:text-blue-700"
             >
@@ -68,7 +67,7 @@ const Footer = () => {
             <a
               href="https://github.com/fahadbgnr"
               target="_blank"
-              rel="noopener noreferrer"
+              
               aria-label="GitHub"
               className="hover:text-blue-700"
             >
